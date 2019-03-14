@@ -11,33 +11,33 @@ curl -X POST --header "Accept: application/json" --header "Content-Type: applica
 						 --data '{
 							 "bus_travel": {
 							 "departure_city_id": 9333,
-							 "destination_city_id": 9360,
-							 "departure_date": "14-03-2019"
+							 "destination_city_id": 9189,
+							 "departure_date": "25-03-2019"
 							 }
 						 }'
 
 				------ Response ---------
 				{
-					 "search_id" : 15705460,
-					 "id" : 15705460,
-					 "departure_city" : {
-							"name" : "Santiago",
-							"id" : 9333
-					 },
-					 "outbound_url" : "https://www.recorrido.cl/api/v2/es/bus_travels/15705460/directions/outbound/bus_operators.json",
+					 "search_id" : 15841885,
+					 "outbound_url" : "https://www.recorrido.cl/api/v2/es/bus_travels/15841885/directions/outbound/bus_operators.json",
+					 "search_progres_url" : "https://www.recorrido.cl/api/v2/es/search_progresses/15841885.json",
+					 "id" : 15841885,
 					 "round_trip" : false,
-					 "search_progres_url" : "https://www.recorrido.cl/api/v2/es/search_progresses/15705460.json",
-					 "departure_date" : "14-03-2019",
+					 "departure_date" : "25-03-2019",
+					 "departure_city" : {
+							"id" : 9333,
+							"name" : "Santiago"
+					 },
 					 "destination_city" : {
-							"name" : "Valdivia",
-							"id" : 9360
+							"id" : 9189,
+							"name" : "Osorno"
 					 }
 				}
 
 ========= Search progress ========
-curl -i -X GET --url "https://www.recorrido.cl/api/v2/es/search_progresses/15705460.json"
+curl -i -X GET --url "https://www.recorrido.cl/api/v2/es/search_progresses/15841885.json"
 				------ Response ---------
 				{"progress_status":"complete"}
 
 ========= Search results ========
-curl -X GET "https://www.recorrido.cl/api/v2/es/bus_travels/15705460/search_results.json"
+curl -X GET "https://www.recorrido.cl/api/v2/es/bus_travels/15841885/search_results.json"
