@@ -1,0 +1,3 @@
+sudo -u postgres psql
+create user recorrido with password 'r3c0rr1d0';  
+alter role recorrido superuser createrole createdb replication;

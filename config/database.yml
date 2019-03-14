@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: recorrido
+  password: r3c0rr1d0
+  host: localhost
+  port: 5431
+
+development:
+  <<: *default
+  database: recorrido_development
+
+test:
+  <<: *default
+  database: recorrido_test
+
+production:
+  url: <%= ENV['RECORRIDO_DATABASE_URL'] %>
