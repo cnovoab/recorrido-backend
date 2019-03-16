@@ -17,3 +17,8 @@ curl -i -X POST 'http://localhost:3000/auth/login' -d '{ "email": "my.mail@mail.
 
 # 3. Create alert (example from Santiago to Osorno)
 curl -i -X POST 'http://localhost:3000/alerts' -d '{ "alert" : { "departure_city_id": 9333, "destination_city_id": 9189, "user_id": 1, "name": "My Alert", "price": 19000 } }' -H 'Content-Type: application/json' -H 'Authorization: jwt-obtained-on-previuos-step'
+
+
+# Test the alerts notifications
+rake bus_travel:lookup
+
