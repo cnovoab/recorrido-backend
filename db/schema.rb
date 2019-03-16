@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_16_043002) do
+ActiveRecord::Schema.define(version: 2019_03_16_101445) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2019_03_16_043002) do
     t.integer "destination_city_id", null: false
     t.integer "user_id", null: false
     t.float "price", null: false
-    t.integer "service_stars"
+    t.integer "service_stars", default: 0, null: false
     t.boolean "active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -37,6 +37,17 @@ ActiveRecord::Schema.define(version: 2019_03_16_043002) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["search_id"], name: "index_bus_travels_on_search_id"
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "country_id", null: false
+    t.string "url_name", null: false
+    t.float "latitude"
+    t.float "longitude"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "lookups", force: :cascade do |t|

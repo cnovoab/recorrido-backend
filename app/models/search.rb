@@ -27,13 +27,13 @@ class Search < ApplicationRecord
     })
   end
 
-  def status
+  def progress
     Typhoeus.get("#{API_URL}/search_progresses/#{resource_id}.json")
   end
 
   def ready?
     return true if self.status == 'complete'
-    response = JSON.parse(status.response_body)
+    response = JSON.parse(progress.response_body)
     return false unless response["progress_status"] == 'complete'
     self.update(status: 'complete')
     true

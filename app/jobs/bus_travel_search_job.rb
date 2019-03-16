@@ -21,7 +21,7 @@ class BusTravelSearchJob < ApplicationJob
       bus_travel.service_stars = cheapest['seat_klass_stars']
       bus_travel.price = cheapest['price']
       bus_travel.bus_operator_id = cheapest['bus_operator_id']
-      bus_travel.bus_operator = cheapest['bus_operator']
+      bus_travel.bus_operator = cheapest['bus_operator_name']
       bus_travel.save
 
       # Update lookup min_price

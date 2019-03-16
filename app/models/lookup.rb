@@ -1,6 +1,7 @@
 class Lookup < ApplicationRecord
   belongs_to :alert
   has_many :searches
+  has_many :bus_travels, through: :searches
 
   def search
     hydra = Typhoeus::Hydra.new
@@ -21,5 +22,17 @@ class Lookup < ApplicationRecord
 
   def date_range
     Date.today..Date.today + 7.days
+  end
+
+  def finished?
+    searches.all? { |s| s.ready? }
+  end
+
+  def better_price?
+    min_price.present? && min_price <= alert.price
+  end
+
+  def tickets_below_price
+    bus_travels.where('price <= ?', alert.price).order(:departure_date)
   end
 end

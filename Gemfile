@@ -38,3 +38,4 @@ gem 'typhoeus'
 gem 'whenever', require: false
 gem 'faraday'
 gem 'sidekiq'
+gem 'sendgrid-ruby'

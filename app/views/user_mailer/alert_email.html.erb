@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h2>Hello, <%= @user.name %>!</h2>
+    <p>
+      You are receiving this email because we have found <br>
+      bus tickets that fullfils your configured price alert<br>
+    </p>
+    <h3> Alert details </h3>
+      <h4><%= @alert.name %></h4>
+      <ul>
+        <li> From: <%= @alert.departure_city.name %> </li>
+        <li> To: <%= @alert.destination_city.name %> </li>
+        <li> Service Class: <%= @alert.service_stars.capitalize %> </li>
+        <li> Price: <%= @alert.price %> </li>
+      </ul>
+    <p>
+      Here is the list of tickets that fullfils your requirements:
+    </p>
+
+    <h1> Tickets details </h1>
+
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Service class</th>
+        <th>Ticket price</th>
+        <th>Bus operator</th>
+      </tr>
+    <% @tickets.each do |ticket| %>
+      <tr>
+        <td><%= ticket.departure_date.strftime('%Y-%m-%d') %></td>
+        <td><%= ticket.departure_date.strftime('%H:%M') %></td>
+        <td><%= ticket.service_stars.capitalize %></td>
+        <td><%= ticket.price %></td>
+        <td><%= ticket.bus_operator %></td>
+      </tr>
+    <% end %>
+    </table>
+  </body>
+</html>
