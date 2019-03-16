@@ -5,4 +5,8 @@ class Alert < ApplicationRecord
   validates :destination_city_id, presence: true
   validates :user_id, presence: true
   validates :price, presence: true
+
+  has_many :lookups
+
+  scope :actives, -> { where(active:true) }
 end

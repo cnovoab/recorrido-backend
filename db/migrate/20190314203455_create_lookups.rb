@@ -1,8 +1,7 @@
-class CreateLookup < ActiveRecord::Migration[5.2]
+class CreateLookups < ActiveRecord::Migration[5.2]
   def change
     create_table :lookups do |t|
       t.integer :alert_id, null: false
-      t.timestamp :search_date, null: false
       t.float :min_price
 
       t.timestamps

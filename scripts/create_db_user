@@ -1,3 +1,5 @@
 sudo -u postgres psql
 create user recorrido with password 'r3c0rr1d0';  
 alter role recorrido superuser createrole createdb replication;
+
+rails generate scaffold Alert name:string departure_city_id:integer destination_city_id:integer user_id:integer price:float service_stars:integer

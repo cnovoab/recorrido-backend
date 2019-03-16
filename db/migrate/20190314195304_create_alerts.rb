@@ -7,6 +7,7 @@ class CreateAlerts < ActiveRecord::Migration[5.2]
       t.integer :user_id, null: false
       t.float :price, null: false
       t.integer :service_stars
+      t.boolean :active, default: :true, null: false
 
       t.timestamps
     end

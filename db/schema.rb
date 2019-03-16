@@ -22,30 +22,42 @@ ActiveRecord::Schema.define(version: 2019_03_14_204344) do
     t.integer "user_id", null: false
     t.float "price", null: false
     t.integer "service_stars"
+    t.boolean "active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "lookup_results", force: :cascade do |t|
-    t.bigint "lookup_id"
+  create_table "bus_travels", force: :cascade do |t|
+    t.bigint "search_id"
     t.datetime "departure_date", null: false
+    t.integer "service_stars", null: false
     t.float "price", null: false
     t.integer "bus_operator_id"
     t.string "bus_operator"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["lookup_id"], name: "index_lookup_results_on_lookup_id"
+    t.index ["search_id"], name: "index_bus_travels_on_search_id"
   end
 
   create_table "lookups", force: :cascade do |t|
     t.bigint "alert_id"
-    t.datetime "search_date", null: false
     t.float "min_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["alert_id"], name: "index_lookups_on_alert_id"
   end
 
-  add_foreign_key "lookup_results", "lookups"
+  create_table "searches", force: :cascade do |t|
+    t.bigint "lookup_id"
+    t.integer "resource_id"
+    t.datetime "search_date", null: false
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lookup_id"], name: "index_searches_on_lookup_id"
+  end
+
+  add_foreign_key "bus_travels", "searches"
   add_foreign_key "lookups", "alerts"
+  add_foreign_key "searches", "lookups"
 end
