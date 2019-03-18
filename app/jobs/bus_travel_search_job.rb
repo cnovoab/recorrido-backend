@@ -11,7 +11,13 @@ class BusTravelSearchJob < ApplicationJob
     stars = search.lookup.alert.service_stars
     results = JSON.parse(search.fetch_results.response_body)
     results = results['outbound']['search_results']
-    results = results.select { |res| stars.nil? || res['seat_klass_stars'] == stars }
+    puts "> Alert ID: #{search.lookup.alert.id}"
+    puts "> Lookup ID: #{search.lookup.id}"
+    puts "> Search ID: #{search.id}"
+    puts "> Search results: #{results.count}"
+    results = results.select { |res| res['seat_klass_stars'] == stars } unless stars == 'any'
+    puts "> Search results after: #{results.count}"
+
 
     unless results.empty?
       results.sort_by! { |res| res['price'] }

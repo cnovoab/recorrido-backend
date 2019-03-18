@@ -5,6 +5,7 @@ class Alert < ApplicationRecord
   validates :destination_city_id, presence: true
   validates :user_id, presence: true
   validates :price, presence: true
+  attribute :service_stars, :integer, default: 0
 
   has_many :lookups
   belongs_to :user

@@ -4,7 +4,7 @@ class AlertsController < ApplicationController
 
   # GET /alerts
   def index
-    @alerts = Alert.all
+    @alerts = Alert.where(user_id: @current_user.id).actives
 
     render json: @alerts
   end
@@ -16,7 +16,7 @@ class AlertsController < ApplicationController
 
   # POST /alerts
   def create
-    @alert = Alert.new(alert_params)
+    @alert = Alert.new(alert_params.merge(user_id: @current_user.id))
 
     if @alert.save
       render json: @alert, status: :created, location: @alert
@@ -36,7 +36,7 @@ class AlertsController < ApplicationController
 
   # DELETE /alerts/1
   def destroy
-    @alert.destroy
+    @alert.update(active: false)
   end
 
   private
@@ -47,6 +47,6 @@ class AlertsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def alert_params
-      params.require(:alert).permit(:name, :departure_city_id, :destination_city_id, :user_id, :price, :service_stars)
+      params.require(:alert).permit(:name, :departure_city_id, :destination_city_id, :price, :service_stars)
     end
 end

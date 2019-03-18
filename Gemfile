@@ -5,8 +5,6 @@ ruby '2.6.1'
 gem 'rails', '~> 5.2.2', '>= 5.2.2.1'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-# gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.0'
 # Use Json Web Token (JWT) for token based authentication
@@ -39,3 +37,4 @@ gem 'whenever', require: false
 gem 'faraday'
 gem 'sidekiq'
 gem 'sendgrid-ruby'
+gem 'jsonapi-rails'
