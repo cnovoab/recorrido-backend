@@ -2,11 +2,20 @@
 
 A simple app for manage alerts on bus travels tickets prices
 
-Please follow this steps:
+For development environment setup, please follow this steps:
 
-1. rake db:setup -> (db:migrate && db:seed if no db creation permission is granted. i.e. Heroku)
-2. rails s
-3. bundle exec sidekiq
+1. Install dependencies: 
+	`bundle install`
+2. Setup Database: 
+	`bundle exec rake db:setup`
+	``` Alernative db setup: if no db creation permission is granted. i.e. Heroku
+	2.1. db:migrate
+	2.2. db:seed
+	```
+3. Start server:
+	`bundle exec rails s`
+4. Start background job processor:
+	`bundle exec sidekiq`
 
 # Create users and alerts
 ## Please do this with a client. If no client available, use this requests:
