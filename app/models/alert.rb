@@ -13,4 +13,11 @@ class Alert < ApplicationRecord
   belongs_to :destination_city, class_name: 'City'
 
   scope :actives, -> { where(active:true) }
+
+  def present
+    presenter = self.slice(:id, :name, :price, :service_stars)
+    presenter[:departure_city] = self.departure_city.present
+    presenter[:destination_city] = self.destination_city.present
+    presenter
+  end
 end

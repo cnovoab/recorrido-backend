@@ -10,4 +10,8 @@ class City < ApplicationRecord
     end
     []
   end
+
+  def present
+    self.slice(:id, :name, :country_id, :latitude, :longitude)
+  end
 end
