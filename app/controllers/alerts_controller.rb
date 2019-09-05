@@ -4,7 +4,7 @@ class AlertsController < ApplicationController
 
   # GET /alerts
   def index
-    @alerts = Alert.where(user_id: @current_user.id).actives
+    @alerts = Alert.where(user_id: @current_user.id).actives.map(&:present)
 
     render json: @alerts
   end
