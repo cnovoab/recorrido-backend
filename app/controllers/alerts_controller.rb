@@ -11,7 +11,7 @@ class AlertsController < ApplicationController
 
   # GET /alerts/1
   def show
-    render json: @alert
+    render json: @alert.present
   end
 
   # POST /alerts

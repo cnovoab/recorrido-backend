@@ -15,7 +15,7 @@ class Alert < ApplicationRecord
   scope :actives, -> { where(active:true) }
 
   def present
-    presenter = self.slice(:id, :name, :price, :service_stars)
+    presenter = self.slice(:id, :name, :price, :service_stars, :active)
     presenter[:departure_city] = self.departure_city.present
     presenter[:destination_city] = self.destination_city.present
     presenter
