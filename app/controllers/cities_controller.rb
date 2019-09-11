@@ -3,7 +3,7 @@ class CitiesController < ApplicationController
 
   # GET /alerts
   def index
-    @cities = City.map(&:present)
+    @cities = City.all.map(&:present)
 
     render json: @cities
   end
