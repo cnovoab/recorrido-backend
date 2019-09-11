@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get 'lookups/latest/bustravels' => 'bustravels#index'
   end
   resources :lookups, only: :show
+  resources :cities, only: :index
   mount Sidekiq::Web => '/sidekiq'
   resources :users
   post '/auth/login', to: 'authentication#login'
